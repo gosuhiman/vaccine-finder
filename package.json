@@ -1,0 +1,22 @@
+{
+  "name": "vaccine-finder",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gosuhiman/vaccine-finder.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gosuhiman/vaccine-finder/issues"
+  },
+  "homepage": "https://github.com/gosuhiman/vaccine-finder#readme",
+  "dependencies": {
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "ts-node": "^9.0.0"
+  }
+}
