@@ -21,6 +21,7 @@ jobs:
       - name: Copy dependencies
         run: cp -r node_modules build/
       - name: Zip code
-        run: zip -r function.zip build/
+        run: zip -r function.zip ./
+        working-directory: build
       - name: Deploy
-        run: aws lambda update-function-code --function-name vaccineFinder --zip-file fileb://function.zip --region eu-central-1
+        run: aws lambda update-function-code --function-name vaccineFinder --zip-file fileb://build/function.zip --region eu-central-1
