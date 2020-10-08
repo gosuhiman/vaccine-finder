@@ -2,12 +2,12 @@ import { config } from 'dotenv';
 
 config();
 
-import { DrugQueryData } from './api-client';
+import { DrugQueryData } from './clients/gdzie-po-lek/gdzie-po-lek-api-client';
 import { VaccineFinder } from './vaccine-finder';
 
 const DRUGS: { [key: string]: DrugQueryData; } = {
-  Vaxigrip: { productId: 95340, pvId: 237434, name: 'Vaxigrip' },
-  Influvac: { productId: 95682, pvId: 240164, name: 'Influvac' }
+  Vaxigrip: { productId: 95340, pvId: 237434 },
+  Influvac: { productId: 95682, pvId: 240164 }
 };
 
 exports.handler = async () => {
