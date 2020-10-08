@@ -61,13 +61,13 @@ export class GdziePoLekApiClient {
     };
 
     const response = await this.instance.post<SearchOfferJsonResponseData>('/Search/OffersJson', data);
-    const pharmacies = this.htmlParser.parsePharmaciesList(response.data?.pharmaciesList);
+    const isAvailable = !response.data?.searchElsewhere;
 
     return {
       name: response.data?.ProductName,
-      available: !response.data?.searchElsewhere,
+      available: isAvailable,
       url: `${BASE_URL}${response.data?.url}`,
-      pharmacies
+      pharmacies: isAvailable ? this.htmlParser.parsePharmaciesList(response.data?.pharmaciesList) : []
     };
   };
 
