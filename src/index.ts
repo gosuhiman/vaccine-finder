@@ -12,8 +12,8 @@ const DRUGS: { [key: string]: DrugQueryData; } = {
 };
 
 exports.handler = async () => {
-  const vaccineFinder = new VaccineFinder([DRUGS.Vaxigrip, DRUGS.Influvac, DRUGS.Coldrex]);
-  vaccineFinder.run()
+  const vaccineFinder = new VaccineFinder([DRUGS.Vaxigrip, DRUGS.Influvac]);
+  await vaccineFinder.run()
   .then(() => {
     console.log('Done');
   })
