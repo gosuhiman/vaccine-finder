@@ -39,7 +39,7 @@ export class GdziePoLekApiClient {
   constructor() {
     this.instance = axios.create({
       baseURL: 'https://www.gdziepolek.pl',
-      timeout: 1000
+      timeout: 5000
     });
   }
 

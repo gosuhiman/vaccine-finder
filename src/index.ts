@@ -11,11 +11,13 @@ const DRUGS: { [key: string]: DrugQueryData; } = {
   Coldrex: { productId: 18983, pvId: 11931, name: 'Coldrex' }, // test product which should be always available
 };
 
-const vaccineFinder = new VaccineFinder([DRUGS.Vaxigrip, DRUGS.Influvac, DRUGS.Coldrex]);
-vaccineFinder.run()
-.then(() => {
-  console.log('Done');
-})
-.catch((err) => {
-  console.error(err);
-});
+exports.handler = async () => {
+  const vaccineFinder = new VaccineFinder([DRUGS.Vaxigrip, DRUGS.Influvac, DRUGS.Coldrex]);
+  vaccineFinder.run()
+  .then(() => {
+    console.log('Done');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+};

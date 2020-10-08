@@ -2,7 +2,9 @@
   "name": "vaccine-finder",
   "version": "1.0.0",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "build": "npm run build:ts",
+    "build:ts": "tsc"
   },
   "repository": {
     "type": "git",
