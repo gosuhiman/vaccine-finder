@@ -1,4 +1,4 @@
-import { GdziePoLekApiClient } from '../src/api-client';
+import { GdziePoLekApiClient } from '../api-client';
 
 describe('GdziePoLekApiClient', () => {
   test('Coldrex should be available', async () => {

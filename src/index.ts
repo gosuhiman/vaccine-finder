@@ -6,9 +6,8 @@ import { DrugQueryData } from './api-client';
 import { VaccineFinder } from './vaccine-finder';
 
 const DRUGS: { [key: string]: DrugQueryData; } = {
-  Vaxigrip: { productId: 95340, pvId: 237434, name: 'Vaxigrip' }, // vaccine
-  Influvac: { productId: 95682, pvId: 240164, name: 'Influvac' }, // vaccine
-  Coldrex: { productId: 18983, pvId: 11931, name: 'Coldrex' }, // test product which should be always available
+  Vaxigrip: { productId: 95340, pvId: 237434, name: 'Vaxigrip' },
+  Influvac: { productId: 95682, pvId: 240164, name: 'Influvac' }
 };
 
 exports.handler = async () => {
