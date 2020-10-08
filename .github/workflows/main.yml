@@ -1,0 +1,26 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Copy dependencies
+        run: cp -r node_modules build/
+      - name: Zip code
+        run: zip -r function.zip build/
+      - name: Deploy
+        run: aws lambda update-function-code --function-name vaccineFinder --zip-file fileb://function.zip --region eu-central-1
