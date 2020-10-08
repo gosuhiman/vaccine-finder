@@ -4,7 +4,8 @@
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "check": "ts-node ./src/cli/check.ts"
   },
   "repository": {
     "type": "git",

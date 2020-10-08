@@ -1,4 +1,4 @@
-import { DrugQueryData, GdziePoLekApiClient } from './clients/gdzie-po-lek/gdzie-po-lek-api-client';
+import { DrugQueryData, DrugResponseData, GdziePoLekApiClient } from './clients/gdzie-po-lek/gdzie-po-lek-api-client';
 import { WebAPICallResult, WebClient } from '@slack/web-api';
 import * as env from 'env-var';
 
@@ -18,7 +18,7 @@ export class VaccineFinder {
     const drugs = await this.client.checkForDrugs(this.drugsToFind);
     for (const drug of drugs) {
       if (drug.available) {
-        const message = `${drug.name} is available in ${drug.pharmacies.length} pharmacies. ${drug.url}`;
+        const message = this.buildMessage(drug);
         console.log(message);
         await this.notify(message);
       } else {
@@ -36,5 +36,14 @@ export class VaccineFinder {
     if (!result.ok) {
       throw new Error(result.error);
     }
+  }
+
+  private buildMessage(drug: DrugResponseData): string {
+    let pharmacyListString = '.';
+    if (drug.pharmacies.length > 0) {
+      pharmacyListString = ':\n' + drug.pharmacies.map(p => `- ${p.name} - ${p.address}`).join('\n');
+    }
+
+    return `*${drug.name}* is available in ${drug.pharmacies.length} pharmacies${pharmacyListString}\n\nLink: ${drug.url}`;
   }
 }
